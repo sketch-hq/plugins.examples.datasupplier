@@ -1,0 +1,21 @@
+{
+  "author" : "Sketch team",
+  "homepage" : "https://developer.sketchapp.com",
+  "identifier" : "com.bohemiancoding.randomdata.example1",
+  "version" : "1.0",
+  "description" : "Example plugin for supplying random data in Sketch",
+  "authorEmail" : "",
+  "name" : "Random Data Supplier",
+  "commands" : [
+    {
+      "script" : "script.js",
+      "handlers" : {
+        "actions" : {
+          "Startup" : "onStartup",
+          "Shutdown" : "onShutdown",
+          "SupplyRandomData" : "onSupplyRandomData"
+        }
+      },
+    }
+  ],
+}
