@@ -26,5 +26,5 @@ var onSupplyData = function(context) {
 
 var onShutdown = function(context) {
   log('In DataSupplier onShutdown');
-  context.api().randomDataManager().deregisterDataSuppliers(context.plugin.identifier());
+  context.api().dataManager().deregisterDataSuppliers(context.plugin.identifier());
 }
