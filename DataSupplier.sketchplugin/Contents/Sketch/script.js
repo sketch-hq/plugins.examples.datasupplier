@@ -1,5 +1,5 @@
 var onStartup = function(context) {
-  log('In RandomData onStartup');
+  log('In DataSupplier onStartup');
   var sketch = context.api();
   
   var dataManager = sketch.randomDataManager();
@@ -17,14 +17,14 @@ var onStartup = function(context) {
   dataManager.registerDynamicSupplier('UK Regions', 'ukRegionsKey', pluginIdentifier);
 }
 
-var onSupplyDynamicRandomData = function(context) {
-  log('In RandomData onStartup'); 
+var onSupplyData = function(context) {
+  log('In DataSupplier onSupplyData'); 
   var dynamicData = ['Scotland', 'North East', 'Northern Ireland', 'North West', 'Yorkshire and the Humber', 'East Midlands', 'Wales', 'West Midlands', 'East of England', 'South East', 'South West', 'London'];
   
   context.randomDataManager().supplyRandomDataForKey(context.randomDataKey, dynamicData);
 }
 
 var onShutdown = function(context) {
-  log('In RandomData onStartup');
+  log('In DataSupplier onShutdown');
   context.api().randomDataManager().deregisterDataSuppliers(context.plugin.identifier());
 }
