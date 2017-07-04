@@ -3,18 +3,13 @@ var onStartup = function(context) {
   var sketch = context.api();
   
   var dataManager = sketch.dataManager();
-  log('### Is context.plugin what I need');
-  log(context.plugin);
-  
-  var pluginIdentifier = context.plugin.identifier();
-  log(pluginIdentifier);
   
   // Register some static data available for random use.
   var staticListOfPeople = ['Lucy', 'John'];
-  dataManager.registerStaticSupplier('First Names', staticListOfPeople, pluginIdentifier);
+  dataManager.registerStaticSupplier('First Names', staticListOfPeople);
   
   // Register a method to supply random data on request.
-  dataManager.registerDynamicSupplier('UK Regions', 'ukRegionsKey', pluginIdentifier);
+  dataManager.registerDynamicSupplier('UK Regions', 'ukRegionsKey');
 }
 
 var onSupplyData = function(context) {
@@ -26,5 +21,5 @@ var onSupplyData = function(context) {
 
 var onShutdown = function(context) {
   log('In DataSupplier onShutdown');
-  context.api().dataManager().deregisterDataSuppliers(context.plugin.identifier());
+  context.api().dataManager().deregisterDataSuppliers();
 }
