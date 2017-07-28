@@ -6,10 +6,10 @@ var onStartup = function(context) {
   
   // Register some static data available for random use.
   var staticListOfPeople = ['Lucy', 'John'];
-  dataManager.registerStaticSupplier('First Names', staticListOfPeople);
+  dataManager.registerStaticSupplier('First Names', 'public.text', staticListOfPeople);
   
   // Register a method to supply random data on request.
-  dataManager.registerDynamicSupplier('UK Regions', 'ukRegionsKey');
+  dataManager.registerDynamicSupplier('UK Regions', 'public.text', 'ukRegionsKey');
 }
 
 var onSupplyData = function(context) {
