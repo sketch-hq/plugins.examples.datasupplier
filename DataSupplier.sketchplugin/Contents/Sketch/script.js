@@ -6,20 +6,24 @@ var onStartup = function(context) {
   
   // Register some static data available for random use.
   var staticListOfPeople = ['Lucy', 'John'];
-  dataManager.registerStaticSupplier('First Names', 'public.text', staticListOfPeople);
+  dataManager.registerStaticSupplier('public.text', 'First Names', staticListOfPeople);
   
   // Register a method to supply random data on request.
-  dataManager.registerDynamicSupplier('UK Regions', 'public.text', 'ukRegionsKey');
+  dataManager.registerDynamicSupplier('public.text', 'UK Regions', 'ukRegionsKey');
+  
+  log(context);
 }
 
 var onSupplyData = function(context) {
-  log('In DataSupplier onSupplyData'); 
+  log('In DataSupplier onSupplyData');
+  var dataKey = context.randomDataKey;
   var dynamicData = ['Scotland', 'North East', 'Northern Ireland', 'North West', 'Yorkshire and the Humber', 'East Midlands', 'Wales', 'West Midlands', 'East of England', 'South East', 'South West', 'London'];
   
-  context.api().dataManager().supplyRandomDataForKey(context.randomDataKey, dynamicData);
+  context.api().dataManager().supplyRandomDataForKey(dataKey, dynamicData);
 }
 
 var onShutdown = function(context) {
   log('In DataSupplier onShutdown');
   context.api().dataManager().deregisterDataSuppliers();
+  log(context);
 }
