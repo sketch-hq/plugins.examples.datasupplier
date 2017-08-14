@@ -5,7 +5,7 @@ var onStartup = function(context) {
   var dataManager = sketch.dataManager();
   
   // Register some static data available for random use.
-  var staticListOfPeople = ['Lucy', 'John'];
+  var staticListOfPeople = ['Lucy', 'Johnnie', 'Petie', 'Jamie', 'Tina', 'Gillie', 'Tania', 'Peta', 'Rudolpho', 'Jellie', 'Ricki', 'Lori', 'Jorgi', 'Marki'];
   dataManager.registerStaticSupplier('public.text', 'First Names', staticListOfPeople);
   
   // Register a method to supply random data on request.
