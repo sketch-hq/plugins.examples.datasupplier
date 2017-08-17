@@ -1,6 +1,6 @@
 
 var onStartup = function(context) {
-  log('In DataSupplier onStartup');
+  log('In com.bohemiancoding.datasupplier.example onStartup');
   var sketch = context.api();
   
   var dataManager = sketch.dataManager();
@@ -20,21 +20,27 @@ var onStartup = function(context) {
   dataManager.registerStaticSupplier('public.image', 'Faces', paths);
   
   // Register a method to supply random data on request.
-  dataManager.registerDynamicSupplier('public.text', 'UK Regions', 'ukRegionsKey');
+  dataManager.registerDynamicSupplier('public.text', 'UK Regions', 'onSupplyUKRegions');
   
   log(context);
 }
 
-var onSupplyData = function(context) {
-  log('In DataSupplier onSupplyData');
-  var dataKey = context.randomDataKey;
-  var dynamicData = ['Scotland', 'North East', 'Northern Ireland', 'North West', 'Yorkshire and the Humber', 'East Midlands', 'Wales', 'West Midlands', 'East of England', 'South East', 'South West', 'London'];
+var onSupplyUKRegions = function(context) {
+  log('In com.bohemiancoding.datasupplier.example onSupplyUKRegions');
+  var dataKey = context.data.key;
+  var dataCount = context.data.count;
   
-  context.api().dataManager().supplyRandomDataForKey(dataKey, dynamicData);
+  var theData = ['Scotland', 'North East', 'Northern Ireland', 'North West', 'Yorkshire and the Humber', 'East Midlands', 'Wales', 'West Midlands', 'East of England', 'South East', 'South West', 'London'];
+  
+  var dynamicData = theData;
+  while (dynamicData.length < dataCount) {
+    dynamicData.push.apply(dynamicData, theData);
+  }
+  context.api().dataManager().supplyDataForKey(dataKey, dynamicData);
 }
 
 var onShutdown = function(context) {
-  log('In DataSupplier onShutdown');
+  log('In com.bohemiancoding.datasupplier.example onShutdown');
   context.api().dataManager().deregisterDataSuppliers();
   log(context);
 }
