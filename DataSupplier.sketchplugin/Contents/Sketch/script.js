@@ -27,8 +27,8 @@ var onStartup = function(context) {
 
 var onSupplyUKRegions = function(context) {
   log('In com.bohemiancoding.datasupplier.example onSupplyUKRegions');
-  var dataKey = context.data.key;
-  var dataCount = context.data.count;
+  var dataKey = context.dataKey;
+  var dataCount = context.dataCount;
   
   var theData = ['Scotland', 'North East', 'Northern Ireland', 'North West', 'Yorkshire and the Humber', 'East Midlands', 'Wales', 'West Midlands', 'East of England', 'South East', 'South West', 'London'];
   
@@ -36,7 +36,8 @@ var onSupplyUKRegions = function(context) {
   while (dynamicData.length < dataCount) {
     dynamicData.push.apply(dynamicData, theData);
   }
-  context.api().dataManager().supplyDataForKey(dataKey, dynamicData);
+  
+  context.api().dataManager().supplyDataForKey(dynamicData, dataKey);
 }
 
 var onShutdown = function(context) {
