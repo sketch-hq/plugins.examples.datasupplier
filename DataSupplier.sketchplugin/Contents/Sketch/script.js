@@ -36,7 +36,7 @@ var onSupplyUKRegions = function(context) {
   while (dynamicData.length < dataCount) {
     dynamicData.push.apply(dynamicData, theData);
   }
-  
+  shuffle(dynamicData);
   context.api().dataManager().supplyDataForKey(dynamicData, dataKey);
 }
 
@@ -44,4 +44,23 @@ var onShutdown = function(context) {
   log('In com.bohemiancoding.datasupplier.example onShutdown');
   context.api().dataManager().deregisterDataSuppliers();
   log(context);
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
