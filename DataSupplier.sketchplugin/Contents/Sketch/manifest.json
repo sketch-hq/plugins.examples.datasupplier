@@ -6,6 +6,7 @@
   "description" : "Example plugin for supplying dynamic data to Sketch",
   "authorEmail" : "",
   "name" : "Data Supplier",
+  "icon" : "artwork-zeplin.png",
   "commands" : [
     {
       "script" : "script.js",

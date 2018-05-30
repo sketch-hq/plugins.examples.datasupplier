@@ -1,0 +1,1 @@
+cp -rf DataSupplier.sketchplugin ~/Library/Application\ Support/com.bohemiancoding.sketch3/Plugins/
