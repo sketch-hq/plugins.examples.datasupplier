@@ -3,7 +3,7 @@
   "homepage" : "https://developer.sketchapp.com",
   "identifier" : "com.bohemiancoding.datasupplier.example",
   "version" : "1.0",
-  "description" : "Example plugin for supplying static and dynamic data to Sketch",
+  "description" : "Example plugin for supplying dynamic data to Sketch",
   "authorEmail" : "",
   "name" : "Data Supplier",
   "commands" : [
@@ -13,6 +13,11 @@
         "actions" : {
           "Startup" : "onStartup",
           "Shutdown" : "onShutdown",
+          "SupplyUKRegions" : "onSupplyUKRegions",
+          "SupplyFaces" : "onSupplyFaces",
+          "SupplyFemaleFaces" : "onSupplyFemaleFaces",
+          "SupplyMaleFaces" : "onSupplyMaleFaces",
+          "SupplyNames" : "onSupplyNames",
         }
       },
     }
