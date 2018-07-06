@@ -1,5 +1,5 @@
 {
-  "author" : "Sketch team",
+  "author" : "Sketch Team",
   "homepage" : "https://developer.sketchapp.com",
   "identifier" : "com.bohemiancoding.datasupplier.example",
   "version" : "1.0",
@@ -7,7 +7,7 @@
   "authorEmail" : "",
   "suppliesData" : true,
   "name" : "Data Supplier",
-  "icon" : "artwork-zeplin.png",
+  "icon" : "icon.png",
   "commands" : [
     {
       "script" : "script.js",
@@ -19,9 +19,9 @@
           "SupplyFaces" : "onSupplyFaces",
           "SupplyFemaleFaces" : "onSupplyFemaleFaces",
           "SupplyMaleFaces" : "onSupplyMaleFaces",
-          "SupplyNames" : "onSupplyNames",
+          "SupplyNames" : "onSupplyNames"
         }
-      },
+      }
     }
-  ],
+  ]
 }
