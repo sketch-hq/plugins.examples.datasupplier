@@ -30,6 +30,11 @@ var onShutdown = function() {
 
 var onSupplyNames = function(context) {
   console.log('*************** In onSupplyNames');
+  console.log('*************** Data description: ' + context.data.description)
+  console.log('*************** isSymbolInstanceOverride: ' + context.data.isSymbolInstanceOverride)
+  if (context.data.isSymbolInstanceOverride) {
+    console.log('****** This is a symbol instance override')
+  }
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
   
@@ -108,6 +113,7 @@ var onSupplyMaleFaces = function(context) {
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
   console.log('dataCount: ' + dataCount)
+  console.log('*************** context.data' + context.data.description())
   var pictureNames = ['0.jpg', '2.jpg', '4.jpg', '6.jpg', '8.jpg'];
   var arrayLength = pictureNames.length;
   var paths = [];
