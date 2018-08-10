@@ -32,9 +32,6 @@ var onSupplyNames = function(context) {
   console.log('*************** In onSupplyNames');
   console.log('*************** Data description: ' + context.data.description)
   console.log('*************** isSymbolInstanceOverride: ' + context.data.isSymbolInstanceOverride)
-  if (context.data.isSymbolInstanceOverride) {
-    console.log('****** This is a symbol instance override')
-  }
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
   
@@ -46,9 +43,15 @@ var onSupplyNames = function(context) {
   while (dynamicData.length < dataCount) {
     dynamicData.push.apply(dynamicData, theData);
   }
+
   shuffle(dynamicData);
   dynamicData = dynamicData.slice(0, dataCount);
-  DataSupplier.supplyData(dataKey, dynamicData);  
+  var dataIndex = 0;
+  while (dataIndex < dataCount) {
+    DataSupplier.supplyDataAtIndex(dataKey, dynamicData[dataIndex], dataIndex);
+    dataIndex++;  
+  } 
+  // DataSupplier.supplyData(dataKey, dynamicData);  
 }
 
 var onSupplyFaces = function(context) {
