@@ -56,7 +56,7 @@ var onSupplyNames = function(context) {
 
 var onSupplyFaces = function(context) {
   console.log('*************** In onSupplyFaces');
-  console.log(context.data);
+  // console.log(context.data);
   var sketch = context.api();
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
@@ -69,19 +69,13 @@ var onSupplyFaces = function(context) {
   
   // Start the data to be provided at a random position in the array.
   var theData = paths.slice(Math.floor(Math.random() * paths.length));
-  // console.log('Data length 1 ' + theData.length)
   theData.push.apply(theData, paths)
-  // console.log('Data length 2 ' + theData.length)
   while (theData.length < dataCount) {
-    // console.log('Randoms: ' + Math.floor(Math.random() * paths.length))
     theData.push.apply(theData, paths);
   }
   
-  console.log('dataCount: ' + dataCount)
   shuffle(theData);
   theData = theData.slice(0, dataCount);
-  console.log('Data ' + theData);
-  console.log('DataKey ' + dataKey);
   DataSupplier.supplyData(dataKey, theData);
 }
 
@@ -90,7 +84,6 @@ var onSupplyFemaleFaces = function(context) {
   var sketch = context.api();
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
-  console.log('dataCount: ' + dataCount)
   var pictureNames = ['1.jpg', '3.jpg', '5.jpg', '7.jpg', '9.jpg'];
   var arrayLength = pictureNames.length;
   var paths = [];
@@ -115,8 +108,6 @@ var onSupplyMaleFaces = function(context) {
   var sketch = context.api();
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
-  console.log('dataCount: ' + dataCount)
-  console.log('*************** context.data' + context.data.description())
   var pictureNames = ['0.jpg', '2.jpg', '4.jpg', '6.jpg', '8.jpg'];
   var arrayLength = pictureNames.length;
   var paths = [];
@@ -140,7 +131,6 @@ var onSupplyUKRegions = function(context) {
   console.log('*************** In com.bohemiancoding.datasupplier.example onSupplyUKRegions');
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
-  
   var theData = ['Scotland', 'North East', 'Northern Ireland', 'North West', 'Yorkshire and the Humber', 'East Midlands', 'Wales', 'West Midlands', 'East of England', 'South East', 'South West', 'London'];
   
   // Start the data to be provided at a random position in the array.
@@ -149,9 +139,8 @@ var onSupplyUKRegions = function(context) {
   while (dynamicData.length < dataCount) {
     dynamicData.push.apply(dynamicData, theData);
   }
-  dynamicData = dynamicData.slice(dataCount);
+  dynamicData = dynamicData.slice(0, dataCount)
   shuffle(dynamicData);
-  theData = theData.slice(0, dataCount);
   DataSupplier.supplyData(dataKey, dynamicData);
 }
 
@@ -163,7 +152,6 @@ function shuffle(array) {
 
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
-    // console.log('Random index ' + randomIndex)
     currentIndex -= 1;
 
     // And swap it with the current element.
