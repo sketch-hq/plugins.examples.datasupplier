@@ -1,6 +1,6 @@
 {
   "name": "datasupplier",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Example plugin for supplying dynamic data to Sketch",
   "license": "MIT",
   "engines": {
