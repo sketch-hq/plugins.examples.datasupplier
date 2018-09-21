@@ -7,7 +7,7 @@
   "suppliesData": true,
   "commands": [
     {
-      "script": "my-command.js",
+      "script": "DataSupplier.js",
       "handlers": {
         "actions": {
           "Startup" : "onStartup",
