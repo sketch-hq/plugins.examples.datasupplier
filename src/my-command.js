@@ -1,6 +1,8 @@
-var DataSupplier = require('sketch/data-supplier')
+const sketch = require('sketch')
+const { DataSupplier } = sketch
+const util = require('util')
 
-var onStartup = function() {
+export function onStartup () {
   console.log('*************** In com.bohemiancoding.datasupplier.example Start: onStartup');
 
   // Register a method to supply a random list of first names.
@@ -15,20 +17,20 @@ var onStartup = function() {
 
   // Register a method to supply a random list of pictures of faces on request.
   DataSupplier.registerDataSupplier('public.image', 'Male Faces', 'SupplyMaleFaces');
-  
+
   // Register a method to supply a random list of UK regions on request.
   DataSupplier.registerDataSupplier('public.text', 'UK Regions', 'SupplyUKRegions');
-  
+
   console.log("*************** In com.bohemiancoding.datasupplier.example End: onStartup");
 }
 
-var onShutdown = function() {
+export function onShutdown () {
   console.log('*************** In com.bohemiancoding.datasupplier.example onShutdown');
   
   DataSupplier.deregisterDataSuppliers();
 }
 
-var onSupplyNames = function(context) {
+export function onSupplyNames (context) {
   console.log('*************** In onSupplyNames');
   console.log('*************** Data description: ' + context.data.description)
   console.log('*************** isSymbolInstanceOverride: ' + context.data.isSymbolInstanceOverride)
@@ -54,7 +56,7 @@ var onSupplyNames = function(context) {
   // DataSupplier.supplyData(dataKey, dynamicData);  
 }
 
-var onSupplyFaces = function(context) {
+export function onSupplyFaces (context) {
   console.log('*************** In onSupplyFaces');
   // console.log(context.data);
   var sketch = context.api();
@@ -79,7 +81,7 @@ var onSupplyFaces = function(context) {
   DataSupplier.supplyData(dataKey, theData);
 }
 
-var onSupplyFemaleFaces = function(context) {
+export function onSupplyFemaleFaces (context) {
   console.log('*************** In onSupplyFemaleFaces');
   var sketch = context.api();
   var dataKey = context.data.key;
@@ -103,7 +105,7 @@ var onSupplyFemaleFaces = function(context) {
   DataSupplier.supplyData(dataKey, theData);
 }
 
-var onSupplyMaleFaces = function(context) {
+export function onSupplyMaleFaces (context) {
   console.log('*************** In onSupplyMaleFaces');
   var sketch = context.api();
   var dataKey = context.data.key;
@@ -127,7 +129,7 @@ var onSupplyMaleFaces = function(context) {
   DataSupplier.supplyData(dataKey, theData);
 }
 
-var onSupplyUKRegions = function(context) {
+export function onSupplyUKRegions (context) {
   console.log('*************** In com.bohemiancoding.datasupplier.example onSupplyUKRegions');
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
@@ -162,4 +164,3 @@ function shuffle(array) {
 
   return array;
 }
-

@@ -1,18 +1,15 @@
 {
-  "author" : "Sketch Team",
+  "compatibleVersion": 3,
   "homepage" : "https://developer.sketchapp.com",
   "identifier" : "com.bohemiancoding.datasupplier.example",
-  "version" : "1.0",
-  "description" : "Example plugin for supplying dynamic data to Sketch",
-  "authorEmail" : "",
-  "suppliesData" : true,
-  "name" : "Data Supplier",
-  "icon" : "icon.png",
-  "commands" : [
+  "bundleVersion": 1,
+  "icon": "icon.png",
+  "suppliesData": true,
+  "commands": [
     {
-      "script" : "script.js",
-      "handlers" : {
-        "actions" : {
+      "script": "my-command.js",
+      "handlers": {
+        "actions": {
           "Startup" : "onStartup",
           "Shutdown" : "onShutdown",
           "SupplyUKRegions" : "onSupplyUKRegions",
