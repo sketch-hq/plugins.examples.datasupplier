@@ -23,7 +23,7 @@
   "devDependencies": {
     "@skpm/builder": "^0.5.2"
   },
-  "author": "Sketch Team",
+  "author": "Sketch",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BohemianCoding/plugins.examples.datasupplier.git"
