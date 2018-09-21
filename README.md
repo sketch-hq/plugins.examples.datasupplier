@@ -1,4 +1,4 @@
-# plugins.examples.exporting
+# plugins.examples.datasupplier
 
 Example Sketch plugin showing how to supply static and dynamic data to Sketch 52, using the new DataSupplier API.
 
