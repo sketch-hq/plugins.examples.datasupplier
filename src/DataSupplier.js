@@ -62,7 +62,7 @@ export function onSupplyFaces (context) {
   var sketch = context.api();
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
-  var pictureNames = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg'];
+  var pictureNames = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
   var arrayLength = pictureNames.length;
   var paths = [];
   for (var i = 0 ; i < arrayLength ; i++) {
@@ -86,7 +86,7 @@ export function onSupplyFemaleFaces (context) {
   var sketch = context.api();
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
-  var pictureNames = ['1.jpg', '3.jpg', '5.jpg', '7.jpg', '9.jpg'];
+  var pictureNames = ['1.jpg', '3.jpg', '5.jpg', '7.jpg', '9.jpg', '10.jpg'];
   var arrayLength = pictureNames.length;
   var paths = [];
   for (var i = 0 ; i < arrayLength ; i++) {
