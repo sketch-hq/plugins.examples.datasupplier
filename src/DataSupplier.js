@@ -26,7 +26,7 @@ export function onStartup () {
 
 export function onShutdown () {
   console.log('*************** In com.bohemiancoding.datasupplier.example onShutdown');
-  
+
   DataSupplier.deregisterDataSuppliers();
 }
 
@@ -36,9 +36,9 @@ export function onSupplyNames (context) {
   console.log('*************** isSymbolInstanceOverride: ' + context.data.isSymbolInstanceOverride)
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
-  
+
   var theData = ['Lucy', 'Johnnie', 'Petie', 'Jamie', 'Tina', 'Gillie', 'Tania', 'Peta', 'Rudolpho', 'Jellie', 'Ricki', 'Lori', 'Jorgi', 'Marki'];
-  
+
   // Start the data to be provided at a random position in the array.
   var dynamicData = theData.slice(Math.floor(Math.random() * theData.length));
   dynamicData.push.apply(dynamicData, theData);
@@ -51,31 +51,30 @@ export function onSupplyNames (context) {
   var dataIndex = 0;
   while (dataIndex < dataCount) {
     DataSupplier.supplyDataAtIndex(dataKey, dynamicData[dataIndex], dataIndex);
-    dataIndex++;  
-  } 
-  // DataSupplier.supplyData(dataKey, dynamicData);  
+    dataIndex++;
+  }
+  // DataSupplier.supplyData(dataKey, dynamicData);
 }
 
 export function onSupplyFaces (context) {
   console.log('*************** In onSupplyFaces');
   // console.log(context.data);
-  var sketch = context.api();
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
   var pictureNames = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
   var arrayLength = pictureNames.length;
   var paths = [];
   for (var i = 0 ; i < arrayLength ; i++) {
-    paths.push(sketch.resourceNamed(pictureNames[i]).path())
+    paths.push(context.plugin.urlForResourceNamed(pictureNames[i]).path())
   }
-  
+
   // Start the data to be provided at a random position in the array.
   var theData = paths.slice(Math.floor(Math.random() * paths.length));
   theData.push.apply(theData, paths)
   while (theData.length < dataCount) {
     theData.push.apply(theData, paths);
   }
-  
+
   shuffle(theData);
   theData = theData.slice(0, dataCount);
   DataSupplier.supplyData(dataKey, theData);
@@ -83,23 +82,22 @@ export function onSupplyFaces (context) {
 
 export function onSupplyFemaleFaces (context) {
   console.log('*************** In onSupplyFemaleFaces');
-  var sketch = context.api();
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
   var pictureNames = ['1.jpg', '3.jpg', '5.jpg', '7.jpg', '9.jpg', '10.jpg'];
   var arrayLength = pictureNames.length;
   var paths = [];
   for (var i = 0 ; i < arrayLength ; i++) {
-    paths.push(sketch.resourceNamed(pictureNames[i]).path())
+    paths.push(context.plugin.urlForResourceNamed(pictureNames[i]).path())
   }
-  
+
   // Start the data to be provided at a random position in the array.
   var theData = paths.slice(Math.floor(Math.random() * paths.length));
   theData.push.apply(theData, paths)
   while (theData.length < dataCount) {
     theData.push.apply(theData, paths)
   }
-  
+
   shuffle(theData)
   theData = theData.slice(0, dataCount);
   DataSupplier.supplyData(dataKey, theData);
@@ -107,23 +105,22 @@ export function onSupplyFemaleFaces (context) {
 
 export function onSupplyMaleFaces (context) {
   console.log('*************** In onSupplyMaleFaces');
-  var sketch = context.api();
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
   var pictureNames = ['0.jpg', '2.jpg', '4.jpg', '6.jpg', '8.jpg'];
   var arrayLength = pictureNames.length;
   var paths = [];
   for (var i = 0 ; i < arrayLength ; i++) {
-    paths.push(sketch.resourceNamed(pictureNames[i]).path())
+    paths.push(context.plugin.urlForResourceNamed(pictureNames[i]).path())
   }
-  
+
   // Start the data to be provided at a random position in the array.
   var theData = paths.slice(Math.floor(Math.random() * paths.length));
   theData.push.apply(theData, paths)
   while (theData.length < dataCount) {
     theData.push.apply(theData, paths)
   }
-  
+
   shuffle(theData)
   theData = theData.slice(0, dataCount);
   DataSupplier.supplyData(dataKey, theData);
@@ -134,7 +131,7 @@ export function onSupplyUKRegions (context) {
   var dataKey = context.data.key;
   var dataCount = context.data.requestedCount;
   var theData = ['Scotland', 'North East', 'Northern Ireland', 'North West', 'Yorkshire and the Humber', 'East Midlands', 'Wales', 'West Midlands', 'East of England', 'South East', 'South West', 'London'];
-  
+
   // Start the data to be provided at a random position in the array.
   var dynamicData = theData.slice(Math.floor(Math.random() * theData.length));
   dynamicData.push.apply(dynamicData, theData);
